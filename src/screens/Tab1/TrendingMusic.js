@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
 import axios from "axios";
 import { URL } from "@env";
 import CONFIG from "../../api/api";
@@ -25,13 +25,13 @@ const TrendingMusic = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <FlatList
         keyExtractor={(music) => music.idTrend}
         data={trendingMusic}
         renderItem={({ item }) => <TrendingMusicItem results={item} />}
       />
-    </View>
+    </ScrollView>
   );
 };
 
