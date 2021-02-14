@@ -3,7 +3,7 @@ import { Text, View, StyleSheet } from "react-native";
 
 const ArtistDetailScreen = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <Text>ArtistDetailScreen</Text>
     </View>
   );

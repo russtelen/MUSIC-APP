@@ -3,7 +3,7 @@ import { Text, View, StyleSheet } from "react-native";
 
 const TrendingMusic = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <Text>Trending Music</Text>
     </View>
   );

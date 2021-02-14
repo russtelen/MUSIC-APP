@@ -6,7 +6,7 @@ const ArtistSearchScreen = ({ navigation }) => {
     navigation.navigate("ArtistDetailScreen");
   };
   return (
-    <View>
+    <View style={styles.container}>
       <TouchableOpacity onPress={() => showDetail()}>
         <Text>ArtistSearchScreen</Text>
       </TouchableOpacity>
