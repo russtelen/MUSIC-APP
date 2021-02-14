@@ -5,6 +5,7 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  TouchableHighlight,
 } from "react-native";
 import axios from "axios";
 import { URL } from "@env";
@@ -40,7 +41,11 @@ const TrendingMusic = ({ navigation }) => {
         keyExtractor={(music) => music.idTrend}
         data={trendingMusic}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={({ item }) => showDetail(item)}>
+          <TouchableOpacity
+            onPress={() => {
+              showDetail(item);
+            }}
+          >
             <TrendingMusicItem results={item} />
           </TouchableOpacity>
         )}

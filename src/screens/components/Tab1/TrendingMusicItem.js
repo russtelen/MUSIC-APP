@@ -10,6 +10,7 @@ const TrendingMusicItem = ({ results }) => {
       <Text style={styles.track}>
         {track.strTrack} by {track.strArtist}
       </Text>
+      <Text style={styles.album}>Album: {track.strAlbum}</Text>
     </View>
   );
 };
@@ -32,5 +33,10 @@ const styles = StyleSheet.create({
   track: {
     textAlign: "center",
     fontSize: 20,
+  },
+  album: {
+    textAlign: "center",
+    fontSize: 15,
+    fontStyle: "italic",
   },
 });
