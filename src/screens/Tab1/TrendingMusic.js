@@ -9,9 +9,8 @@ const TrendingMusic = () => {
 
   const fetchTrendingMusic = async () => {
     try {
-      const res = await axios.get(URL, CONFIG);
+      const res = await axios.get(`${URL}/trending.php`, CONFIG);
       const data = await res.data.trending;
-      console.log(data);
       setTrendingMusic(data);
     } catch (e) {
       console.log(e);
@@ -20,12 +19,11 @@ const TrendingMusic = () => {
 
   useEffect(() => {
     fetchTrendingMusic();
-    console.log(trendingMusic);
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Artist:</Text>
+      <Text>Artist: </Text>
     </View>
   );
 };
