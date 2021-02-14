@@ -3,6 +3,8 @@ import { Text, View, StyleSheet } from "react-native";
 import axios from "axios";
 import { URL } from "@env";
 import CONFIG from "../../api/api";
+import { FlatList } from "react-native-gesture-handler";
+import TrendingMusicItem from "../components/Tab1/TrendingMusicItem";
 
 const TrendingMusic = () => {
   const [trendingMusic, setTrendingMusic] = useState([]);
@@ -11,6 +13,7 @@ const TrendingMusic = () => {
     try {
       const res = await axios.get(`${URL}/trending.php`, CONFIG);
       const data = await res.data.trending;
+      console.log(data);
       setTrendingMusic(data);
     } catch (e) {
       console.log(e);
@@ -23,7 +26,11 @@ const TrendingMusic = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Artist: </Text>
+      <FlatList
+        keyExtractor={(music) => music.idTrend}
+        data={trendingMusic}
+        renderItem={({ item }) => <TrendingMusicItem results={item} />}
+      />
     </View>
   );
 };
