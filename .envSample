@@ -1,0 +1,3 @@
+KEY = < API KEY >
+HOST = theaudiodb.p.rapidapi.com
+URL = https://theaudiodb.p.rapidapi.com/track-top10.php
