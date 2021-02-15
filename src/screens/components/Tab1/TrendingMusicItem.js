@@ -19,13 +19,15 @@ export default TrendingMusicItem;
 
 const styles = StyleSheet.create({
   container: {
+    // flex: 1,
     backgroundColor: "#fff",
-    // alignItems: "center",
+    // alignItems: "stretch",
     // justifyContent: "center",
   },
   image: {
     width: "90%",
     margin: "auto",
+    marginHorizontal: 20,
     marginVertical: 20,
     height: 300,
     borderRadius: 10,

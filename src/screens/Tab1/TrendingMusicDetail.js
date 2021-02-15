@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, LogBox } from "react-native";
 import axios from "axios";
 import { URL } from "@env";
 import CONFIG from "../../api/api";
 import { ScrollView } from "react-native-gesture-handler";
 import TrendingMusicDetailInfo from "../components/Tab1/TrendingMusicDetailInfo";
 
-const TrendingMusicDetail = ({ navigation, route }) => {
+const TrendingMusicDetail = ({ route }) => {
   const {
     strTrackThumb,
     strTrack,
@@ -23,11 +23,11 @@ const TrendingMusicDetail = ({ navigation, route }) => {
     const res = await axios.get(`${URL}/searchtrack.php`, CONFIG);
 
     const data = await res.data.track[0];
-    console.log(data);
     setMusic(data);
   };
 
   useEffect(() => {
+    LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
     fetchMusic();
   }, []);
 
