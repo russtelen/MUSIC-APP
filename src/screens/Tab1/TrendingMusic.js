@@ -18,6 +18,8 @@ const TrendingMusic = ({ navigation }) => {
 
   const fetchTrendingMusic = async () => {
     try {
+      CONFIG.params = { country: "us", type: "itunes", format: "singles" };
+
       const res = await axios.get(`${URL}/trending.php`, CONFIG);
       const data = await res.data.trending;
       console.log(data);

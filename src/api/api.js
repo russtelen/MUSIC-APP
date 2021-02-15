@@ -1,7 +1,6 @@
-import { KEY, HOST, URL } from "@env";
+import { KEY, HOST } from "@env";
 
-const CONFIG = {
-  params: { country: "us", type: "itunes", format: "singles" },
+var CONFIG = {
   headers: {
     "x-rapidapi-key": KEY,
     "x-rapidapi-host": HOST,
