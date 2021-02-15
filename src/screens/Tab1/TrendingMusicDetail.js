@@ -4,6 +4,7 @@ import axios from "axios";
 import { URL } from "@env";
 import CONFIG from "../../api/api";
 import { ScrollView } from "react-native-gesture-handler";
+import TrendingMusicDetailInfo from "../components/Tab1/TrendingMusicDetailInfo";
 
 const TrendingMusicDetail = ({ navigation, route }) => {
   const {
@@ -32,17 +33,7 @@ const TrendingMusicDetail = ({ navigation, route }) => {
 
   return (
     <ScrollView style={styles.container}>
-      <Image source={{ uri: music.strTrackThumb }} style={styles.image} />
-      <Text>
-        {music.strTrack} by {music.strArtist}
-      </Text>
-      <Text>{music.strDescriptionEN}</Text>
-      <Text>{music.strMusicVid}</Text>
-      {music.strMusicVidCompany ? (
-        <Text>
-          Directed by: {music.strMusicVidDirector}, {music.strMusicVidCompany}
-        </Text>
-      ) : null}
+      <TrendingMusicDetailInfo music={music} />
     </ScrollView>
   );
 };
