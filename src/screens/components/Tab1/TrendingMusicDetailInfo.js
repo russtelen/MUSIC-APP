@@ -3,14 +3,8 @@ import { Text, View, StyleSheet, Image, Button, Alert } from "react-native";
 import { Accordion } from "native-base";
 import YoutubePlayer from "react-native-youtube-iframe";
 
-const TrendingMusicDetailInfo = ({ music }) => {
+const TrendingMusicDetailInfo = ({ youtubeId, music }) => {
   const [playing, setPlaying] = useState(false);
-  const [track, setTrack] = useState(null);
-
-  useEffect(() => {
-    setTrack(music);
-    getYoutubeId();
-  }, []);
 
   // YoutubePlayer
   //==================
@@ -24,17 +18,6 @@ const TrendingMusicDetailInfo = ({ music }) => {
   const togglePlaying = useCallback(() => {
     setPlaying((prev) => !prev);
   }, []);
-
-  const getYoutubeId = async () => {
-    try {
-      const str = await music.strMusicVid;
-      console.log(str);
-      //   const str = await "https://www.youtube.com/watch?v=B6_iQvaIjXw";
-      console.log(await str.substring(str.lastIndexOf("=") + 1));
-    } catch (e) {
-      console.log(e);
-    }
-  };
 
   // Accordion data
   //==================
@@ -56,7 +39,7 @@ const TrendingMusicDetailInfo = ({ music }) => {
         <YoutubePlayer
           height={180}
           play={playing}
-          videoId={"B6_iQvaIjXw"}
+          videoId={youtubeId}
           onChangeState={onStateChange}
         />
         <Button title={playing ? "pause" : "play"} onPress={togglePlaying} />

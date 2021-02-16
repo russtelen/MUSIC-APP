@@ -16,6 +16,7 @@ const TrendingMusicDetail = ({ route }) => {
   } = route.params;
 
   const [music, setMusic] = useState("");
+  const [youtubeId, setYoutubeId] = useState("");
 
   const fetchMusic = async () => {
     CONFIG.params = { s: strArtist, t: strTrack };
@@ -26,14 +27,25 @@ const TrendingMusicDetail = ({ route }) => {
     setMusic(data);
   };
 
+  const getYoutubeId = async () => {
+    const str = await music.strMusicVid; // "https://www.youtube.com/watch?v=B6_iQvaIjXw"
+
+    if (str) {
+      return await str.substring(str.lastIndexOf("=") + 1); //B6_iQvaIjXw
+    }
+  };
+
   useEffect(() => {
     LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
     fetchMusic();
-  }, []);
+    getYoutubeId().then((id) => {
+      setYoutubeId(id);
+    });
+  }, [music, setYoutubeId]);
 
   return (
     <ScrollView style={styles.container}>
-      <TrendingMusicDetailInfo music={music} />
+      <TrendingMusicDetailInfo youtubeId={youtubeId} music={music} />
     </ScrollView>
   );
 };
