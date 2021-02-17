@@ -19,29 +19,30 @@ const TrendingMusicDetail = ({ route }) => {
   const [youtubeId, setYoutubeId] = useState("");
 
   const fetchMusic = async () => {
-    CONFIG.params = { s: strArtist, t: strTrack };
+    try {
+      CONFIG.params = { s: strArtist, t: strTrack };
 
-    const res = await axios.get(`${URL}/searchtrack.php`, CONFIG);
+      const res = await axios.get(`${URL}/searchtrack.php`, CONFIG);
 
-    const data = await res.data.track[0];
-    setMusic(data);
-  };
+      const data = await res.data.track[0];
 
-  const getYoutubeId = async () => {
-    const str = await music.strMusicVid; // "https://www.youtube.com/watch?v=B6_iQvaIjXw"
+      const str = await data.strMusicVid;
 
-    if (str) {
-      return await str.substring(str.lastIndexOf("=") + 1); //B6_iQvaIjXw
+      if (str) {
+        const id = await str.substring(str.lastIndexOf("=") + 1);
+        setYoutubeId(id);
+      }
+
+      setMusic(data);
+    } catch (e) {
+      console.log(e);
     }
   };
 
   useEffect(() => {
     LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
     fetchMusic();
-    getYoutubeId().then((id) => {
-      setYoutubeId(id);
-    });
-  }, [music, setYoutubeId]);
+  }, []);
 
   return (
     <ScrollView style={styles.container}>
