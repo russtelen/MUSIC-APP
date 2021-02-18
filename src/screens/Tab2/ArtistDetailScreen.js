@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet } from "react-native";
 
-const ArtistDetailScreen = () => {
+const ArtistDetailScreen = ({ route }) => {
+  const artist = route.params;
+
   return (
     <View style={styles.container}>
-      <Text>ArtistDetailScreen</Text>
+      <Text>{artist.strArtist}</Text>
     </View>
   );
 };

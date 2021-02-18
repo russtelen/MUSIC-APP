@@ -45,11 +45,15 @@ const ArtistSearchScreen = ({ navigation }) => {
         <View style={styles.resultContainer}>
           <Image source={{ uri: artist.strArtistThumb }} style={styles.image} />
           <Text style={styles.name}>{artist.strArtist}</Text>
-          <TouchableOpacity onPress={() => showDetail(item)}>
-            <Button full light style={{ margin: "auto" }}>
-              <Text style={{ paddingHorizontal: 30 }}>More Details</Text>
-            </Button>
-          </TouchableOpacity>
+
+          <Button
+            full
+            light
+            style={{ margin: "auto" }}
+            onPress={() => showDetail(artist)}
+          >
+            <Text style={{ paddingHorizontal: 30 }}>More Details</Text>
+          </Button>
         </View>
       )}
     </View>
