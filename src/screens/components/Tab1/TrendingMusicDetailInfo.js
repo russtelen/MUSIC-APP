@@ -37,7 +37,7 @@ const TrendingMusicDetailInfo = ({ youtubeId, music }) => {
 
       <View style={{ margin: 20 }}>
         <YoutubePlayer
-          height={180}
+          height={250}
           play={playing}
           videoId={youtubeId}
           onChangeState={onStateChange}

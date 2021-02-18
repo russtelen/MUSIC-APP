@@ -26,16 +26,21 @@ const TrendingMusicDetail = ({ route }) => {
 
       const data = await res.data.track[0];
 
-      const str = await data.strMusicVid;
-
-      if (str) {
-        const id = await str.substring(str.lastIndexOf("=") + 1);
-        setYoutubeId(id);
-      }
-
       setMusic(data);
     } catch (e) {
       console.log(e);
+    }
+  };
+
+  const getYOutubeId = () => {
+    if (!music) {
+      return;
+    }
+    const str = music.strMusicVid;
+
+    if (str) {
+      const id = str.substring(str.lastIndexOf("=") + 1);
+      setYoutubeId(id);
     }
   };
 
@@ -43,6 +48,10 @@ const TrendingMusicDetail = ({ route }) => {
     LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
     fetchMusic();
   }, []);
+
+  useEffect(() => {
+    getYOutubeId();
+  }, [music]);
 
   return (
     <ScrollView style={styles.container}>
