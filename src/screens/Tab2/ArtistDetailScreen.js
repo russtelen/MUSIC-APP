@@ -27,7 +27,7 @@ const ArtistDetailScreen = ({ route }) => {
         style={{
           display: "flex",
           flexDirection: "row",
-          marginHorizontal: 50,
+          justifyContent: "center",
           marginTop: 20,
         }}
       >
